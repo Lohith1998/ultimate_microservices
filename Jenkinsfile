@@ -16,7 +16,8 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker push 172054/currencyservice:latest "
+                        sh "docker push 172054/currencyservice:latest"
+                        sh "docker rmi 172054/currencyservice:latest"
                     }
                 }
             }
