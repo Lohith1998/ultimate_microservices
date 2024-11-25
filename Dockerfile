@@ -35,7 +35,7 @@ FROM base as without-grpc-health-probe-bin
 # Enable unbuffered logging
 ENV PYTHONUNBUFFERED=1
 # Enable Profiler
-ENV ENABLE_PROFILER=1
+ENV DISABLE_PROFILER=1
 
 WORKDIR /email_server
 
