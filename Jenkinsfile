@@ -18,6 +18,7 @@ pipeline {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
                         sh "docker push 172054/adservice:latest "
+                         sh "docker rmi 172054/adservice:latest "
                     }
                 }
             }
