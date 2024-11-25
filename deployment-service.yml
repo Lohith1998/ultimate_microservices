@@ -248,11 +248,11 @@ spec:
           #   value: "Replace this with a message you want to display on all pages."
           resources:
             requests:
-              cpu: 100m
-              memory: 64Mi
+              cpu: 1000m
+              memory: 640Mi
             limits:
-              cpu: 200m
-              memory: 128Mi
+              cpu: 2000m
+              memory: 1280Mi
 ---
 apiVersion: v1
 kind: Service
