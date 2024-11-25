@@ -129,9 +129,11 @@ def start(dummy_mode):
   logger.info("listening on port: "+port)
   server.add_insecure_port('[::]:'+port)
   server.start()
+  
+  # Keep the server running by adding an infinite loop
   try:
     while True:
-      time.sleep(3600)
+      time.sleep(60)  # sleep for 60 seconds to keep the process alive
   except KeyboardInterrupt:
     server.stop(0)
 
@@ -155,7 +157,7 @@ def initStackdriverProfiling():
       logger.info("Unable to start Stackdriver Profiler Python agent. " + str(exc))
       if (retry < 4):
         logger.info("Sleeping %d to retry initializing Stackdriver Profiler"%(retry*10))
-        time.sleep (1)
+        time.sleep(1)
       else:
         logger.warning("Could not initialize Stackdriver Profiler after retrying, giving up")
   return
@@ -195,4 +197,4 @@ if __name__ == '__main__':
   except Exception as e:
       logger.warn(f"Exception on Cloud Trace setup: {traceback.format_exc()}, tracing disabled.") 
   
-  start(dummy_mode = True)
+  start(dummy_mode=True)
